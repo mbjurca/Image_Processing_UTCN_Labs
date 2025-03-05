@@ -14,7 +14,3 @@ add_executable(Lab1
 )
 
 target_link_libraries(Lab1 ${OpenCV_LIBS})
-
-set_target_properties(Lab1 PROPERTIES
-        VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/Lab1"
-)
