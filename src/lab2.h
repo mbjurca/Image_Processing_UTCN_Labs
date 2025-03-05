@@ -4,17 +4,17 @@
 using namespace std;
 using namespace cv;
 
-typedef struct image_channels_bgr{
+typedef struct {
     Mat B;
     Mat G;
     Mat R;
-};
+} image_channels_bgr;
 
-typedef struct image_channels_hsv{
+typedef struct {
     Mat H;
     Mat S;
     Mat V;
-};
+} image_channels_hsv;
 
 image_channels_bgr break_channels(Mat source);
 
