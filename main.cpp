@@ -1,3 +1,10 @@
-//
-// Created by Mihnea Jurk on 05.03.2025.
-//
+#include <iostream>
+#include <opencv2/opencv.hpp>
+#include "src/lab1.h"
+using namespace std;
+using namespace cv;
+
+int main(){
+
+    return 0;
+}
