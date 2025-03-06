@@ -147,5 +147,5 @@ bool IsInside(Mat img, int i, int j){
     //*****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     //*****END OF YOUR CODE(DO NOT DELETE / MODIFY THIS LINE) *****
-
+    return true;
 }
