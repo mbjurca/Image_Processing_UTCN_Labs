@@ -93,7 +93,7 @@ Mat grayscale_2_binary(Mat source, int threshold){
 image_channels_hsv bgr_2_hsv(image_channels_bgr bgr_channels){
     /*
     * Create a function that will compute the H, S and V values from the R, G, B channels of
-    * an image, using the equations from 2.6. Store each value (H, S, V) in a CV_8UC1 matrix that will be
+    * an image, using the equations from 2.6. Store each value (H, S, V) in a matrix with float elements that will be
     * stored in an image_channels_hsv struct.
     * Inputs:
     *    bgr_channels: structure that stores the B, G, R channels of an image
