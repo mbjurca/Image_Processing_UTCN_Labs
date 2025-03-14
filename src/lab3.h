@@ -19,7 +19,7 @@ float* compute_pdf(int* histogram, Mat source);
 
 void showHistogram(const string& name, int* hist, const int  hist_cols, const int hist_height);
 
-grayscale_mapping multi_level_thresholding(Mat source, int wh, float th, float* pdf);
+grayscale_mapping multi_level_thresholding(int wh, float th, float* pdf);
 
 uchar find_closest_histogram_maximum(uchar old_pixel, grayscale_mapping gray_map);
 
