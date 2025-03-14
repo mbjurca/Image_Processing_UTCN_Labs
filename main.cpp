@@ -36,9 +36,9 @@ int main(){
     showHistogram("Histogram reduced bins", histogram_custom, 40, 100);
 
 
-    grayscale_mapping grayscale_map_saturn = multi_level_thresholding(saturn, 5, 0.0003, pdf_saturn);
+    grayscale_mapping grayscale_map_saturn = multi_level_thresholding(5, 0.0003, pdf_saturn);
 
-    grayscale_mapping grayscale_map_cameraman = multi_level_thresholding(saturn, 5, 0.0003, pdf_cameraman);
+    grayscale_mapping grayscale_map_cameraman = multi_level_thresholding(5, 0.0003, pdf_cameraman);
     Mat image_multi_threshold_cameraman = draw_multi_thresholding(cameraman, grayscale_map_cameraman);
     imshow("Multi level threshold cameraman", image_multi_threshold_cameraman);
     Mat fsd_cameraman = floyd_steinberg_dithering(cameraman, grayscale_map_cameraman);
