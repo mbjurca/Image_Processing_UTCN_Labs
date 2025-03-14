@@ -102,7 +102,7 @@ void showHistogram(const string& name, int* hist, const int  hist_cols, const in
 
 }
 
-grayscale_mapping multi_level_thresholding(Mat source, int wh, float th, float* pdf){
+grayscale_mapping multi_level_thresholding(int wh, float th, float* pdf){
     /*
      * Implement the multilevel thresholding algorithm from section 3.3.
      * Return a grayscale_mapping structure:
