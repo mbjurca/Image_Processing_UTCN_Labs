@@ -1,53 +1,21 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "src/lab3.h"
+#include "src/lab4.h"
 using namespace std;
 using namespace cv;
 
-int main(){
+int main() {
+    Mat image = imread("/Users/mihneajurk/Desktop/IP/Labs_solved/images/geometrical_features.bmp",
+                       IMREAD_COLOR);
 
+    namedWindow("My Window", 1);
 
-    Mat cameraman = //read cameraman image
-    Mat saturn = //read saturn image
+    //set the callback function for any mouse event
+    setMouseCallback("My Window", geom_features, &image);
 
-    imshow("Cameraman original", cameraman);
-    imshow("Saturn original", saturn);
+    //show the image
+    imshow("My Window", image);
 
-    int* histogram_cameraman = compute_histogram_naive(cameraman);
-    float* pdf_cameraman = compute_pdf(histogram_cameraman, cameraman);
-
-    int* histogram_saturn = compute_histogram_naive(saturn);
-    float* pdf_saturn = compute_pdf(histogram_saturn, saturn);
-
-    printf("Some histogram values are: ");
-    for(int i=50; i < 56; i++){
-        printf("%d ", histogram_cameraman[i]);
-    }
-    printf("\n");
-
-    printf("Some pdf values are: ");
-    for(int i=50; i < 56; i++){
-        printf("%f ", pdf_cameraman[i]);
-    }
-
-    showHistogram("Histogram", histogram_cameraman, 256, 100);
-
-    int* histogram_custom = compute_histogram_custom(cameraman, 40);
-    showHistogram("Histogram reduced bins", histogram_custom, 40, 100);
-
-
-    grayscale_mapping grayscale_map_saturn = multi_level_thresholding(saturn, 5, 0.0003, pdf_saturn);
-
-    grayscale_mapping grayscale_map_cameraman = multi_level_thresholding(saturn, 5, 0.0003, pdf_cameraman);
-    Mat image_multi_threshold_cameraman = draw_multi_thresholding(cameraman, grayscale_map_cameraman);
-    imshow("Multi level threshold cameraman", image_multi_threshold_cameraman);
-    Mat fsd_cameraman = floyd_steinberg_dithering(cameraman, grayscale_map_cameraman);
-    imshow("Floyd Steinberg Dithering cameraman", fsd_cameraman);
-
-    Mat image_multi_threshold_saturn = draw_multi_thresholding(saturn, grayscale_map_saturn);
-    imshow("Multi level threshold saturn", image_multi_threshold_saturn);
-    Mat fsd_saturn = floyd_steinberg_dithering(saturn, grayscale_map_saturn);
-    imshow("Floyd Steinberg Dithering saturn", fsd_saturn);
     waitKey(0);
     return 0;
 }
