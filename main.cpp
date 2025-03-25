@@ -1,21 +1,24 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "src/lab4.h"
+#include "src/lab5.h"
 using namespace std;
 using namespace cv;
 
 int main() {
-    Mat image = imread("/Users/mihneajurk/Desktop/IP/Labs_solved/images/geometrical_features.bmp",
-                       IMREAD_COLOR);
+    Mat source = imread("YOUR_PATH_HERE",
+                        IMREAD_GRAYSCALE);
 
-    namedWindow("My Window", 1);
+    imshow("Original Image", source);
 
-    //set the callback function for any mouse event
-    setMouseCallback("My Window", geom_features, &image);
+    labels bfsLabels = BFS_labeling(source);
+    Mat result_bfs = color_labels(bfsLabels);
+    imshow("BFS", result_bfs);
 
-    //show the image
-    imshow("My Window", image);
+    labels two_pass_label = Two_pass_labeling(source);
+    Mat result_two_pass = color_labels(two_pass_label);
+    imshow("Two pass", result_two_pass);
 
-    waitKey(0);
+    waitKey();
+
     return 0;
 }
