@@ -1,22 +1,31 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "src/lab5.h"
+#include "src/lab6.h"
 using namespace std;
 using namespace cv;
 
 int main() {
-    Mat source = imread("YOUR_PATH_HERE",
+
+    Mat source = imread("YOUR_PATH_TO/star_R90.bmp",
                         IMREAD_GRAYSCALE);
 
     imshow("Original Image", source);
 
-    labels bfsLabels = BFS_labeling(source);
-    Mat result_bfs = color_labels(bfsLabels);
-    imshow("BFS", result_bfs);
+    Point P_0 = find_P_0(source);
+    contour cnt = extract_contour(source, P_0);
+    Mat mat_cnt = draw_contour(cnt, source);
 
-    labels two_pass_label = Two_pass_labeling(source);
-    Mat result_two_pass = color_labels(two_pass_label);
-    imshow("Two pass", result_two_pass);
+    imshow("Contour", mat_cnt);
+
+    print_AC_DC_chain_codes(cnt);
+
+    FILE *pf;
+    pf = fopen("YOUR_PATH_TO/reconstruct.txt", "r");
+    Mat background = imread("YOUR_PATH_TO//gray_background.bmp", IMREAD_GRAYSCALE);
+
+    Mat reconstruction = contour_reconstruction(pf, background);
+
+    imshow("Reconstruction", reconstruction);
 
     waitKey();
 
