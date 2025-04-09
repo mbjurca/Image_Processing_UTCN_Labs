@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(Lab6)
+project(Lab7)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -7,10 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(Lab6
+add_executable(Lab7
         main.cpp
-        src/lab6.cpp
-        src/lab6.h
+        src/lab7.cpp
+        src/lab7.h
 )
 
-target_link_libraries(Lab6 ${OpenCV_LIBS})
+target_link_libraries(Lab7 ${OpenCV_LIBS})
